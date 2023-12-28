@@ -15,7 +15,7 @@ use App\Http\Controllers\EmpresaController;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
+//     return view('posts.index');
 // });
 
 Route::resource('posts', EmpresaController::class);
