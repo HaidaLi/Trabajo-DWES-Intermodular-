@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Route::resourceVerbs([
             'index' => 'listado',
-            'show' => 'ficha',
+            'show' => 'tarjeta',
             // 'create' => 'creacion',
             // 'edit' => 'edicion'
         ]);
