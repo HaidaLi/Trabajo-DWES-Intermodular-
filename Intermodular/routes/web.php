@@ -17,5 +17,8 @@ use App\Http\Controllers\EmpresaController;
 // Route::get('/', function () {
 //     return view('posts.index');
 // });
+Route::get('/empresas/nuevoEmpresa', [EmpresaController::class, 'nuevoEmpresa'])->name('nuevoEmpresa');
+
+Route::get('/empresas/editarPost/{id}', [EmpresaController::class, 'editarEmpresa'])->name('posts.editarEmpresa');
 
 Route::resource('posts', EmpresaController::class);
