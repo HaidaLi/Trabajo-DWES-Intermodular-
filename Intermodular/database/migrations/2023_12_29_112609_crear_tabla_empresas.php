@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('puestos_disponibles')->nullable();
             $table->string('categorias')->nullable();
             $table->timestamps();
+            
         });
     }
 

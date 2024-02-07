@@ -14,7 +14,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::get();
-        return $usuarios;
+        return response()->json($usuarios, 200);
     }
 
     /**
@@ -22,7 +22,11 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->dni = $request->dni;
+        $usuario->login = $request->login;
+        $usuario->password = $request->password;
+        $usuario->nombre = $request->nombre;
     }
 
     /**
@@ -30,7 +34,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return  $usuario;
+        return response()->json($usuario, 200);;
     }
 
     /**

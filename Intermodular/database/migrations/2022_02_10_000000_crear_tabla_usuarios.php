@@ -16,9 +16,11 @@ return new class extends Migration
             $table->string('login')->unique();
             $table->string('password');
             $table->string('nombre');
+            // $table->unsignedBigInteger('empresa_id');
+            // $table->unsignedInteger('centro_id');
+            // $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            // $table->foreign('centro_id')->references('id')->on('centros')->onDelete('cascade');
             $table->timestamps();
-
-
         });
     }
 
