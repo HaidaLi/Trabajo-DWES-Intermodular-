@@ -15,4 +15,9 @@ class Centro extends Model
     {
         return $this->belongsToMany(Empresa::class,'centro_empresa');
     }
+
+    public function usuarios()
+    {
+        return $this->hasMany(Usuario::class);
+    }
 }

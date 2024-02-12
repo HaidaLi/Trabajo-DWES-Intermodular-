@@ -46,4 +46,13 @@ class Usuario extends Authenticatable
     public function roles(){
         return $this->belongsToMany(Rol::class);
     }
+
+    public function centro()
+    {
+        return $this->belongsTo(Centro::class);
+    }
+
+    public  function empresa(){
+        return $this->belongsTo(Empresa::class);
+    }
 }
