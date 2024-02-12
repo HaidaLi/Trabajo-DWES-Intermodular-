@@ -15,9 +15,8 @@ class Centro extends Model
     {
         return $this->belongsToMany(Empresa::class,'centro_empresa');
     }
-
-    public function formularios()
+    public function usuarios()
     {
-        return $this->belongsToMany(Empresa::class,'centro_formulario');
+        return $this->hasMany(Usuario::class);
     }
 }
