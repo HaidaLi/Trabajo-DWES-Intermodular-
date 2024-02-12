@@ -14,8 +14,6 @@ class EmpresaController extends Controller
         $empresas = Empresa::orderBy('nombre','asc')
         ->paginate(5);
         return view('posts.index', compact('empresas'));
-        //hola buenas tardes
-
     }
 
     /**
