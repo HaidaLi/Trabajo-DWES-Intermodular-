@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rol extends Model
+class CentroEmpresa extends Model
 {
     use HasFactory;
-
-    protected $table = 'roles';
-
-    public function usuarios(){
-        return $this->belongsToMany(Usuario::class);
-    }
+    protected $table = 'centro_empresa';
 }
-
