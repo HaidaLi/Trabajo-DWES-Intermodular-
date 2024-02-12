@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Usuario;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
-class UsuarioController extends Controller
+class CategoriaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $usuarios = Usuario::get();
-        return response()->json($usuarios, 200);
+        //
     }
 
     /**
@@ -22,25 +21,21 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new Usuario();
-        $usuario->dni = $request->dni;
-        $usuario->login = $request->login;
-        $usuario->password = $request->password;
-        $usuario->nombre = $request->nombre;
+        //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Usuario $usuario)
+    public function show(Categoria $categoria)
     {
-        return response()->json($usuario, 200);;
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, Categoria $categoria)
     {
         //
     }
@@ -48,7 +43,7 @@ class UsuarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Usuario $usuario)
+    public function destroy(Categoria $categoria)
     {
         //
     }
