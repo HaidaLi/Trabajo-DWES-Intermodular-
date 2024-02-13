@@ -3,11 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UsuarioRequest;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
+
 class UsuarioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum', [
+            'except' => ['index', 'show']
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -17,6 +26,8 @@ class UsuarioController extends Controller
         return response()->json($usuarios, 200);
     }
 
+    
+
     /**
      * Store a newly created resource in storage.
      */
@@ -25,8 +36,12 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $usuario->dni = $request->dni;
         $usuario->login = $request->login;
-        $usuario->password = $request->password;
+        $usuario->password = bcrypt($request->password);
         $usuario->nombre = $request->nombre;
+        $usuario->save();
+
+        return response()->json($usuario, 201);
+
     }
 
     /**
@@ -40,9 +55,10 @@ class UsuarioController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioRequest $request, Usuario $usuario)
     {
-        //
+        $usuario->update($request->all());
+        return response()->json($usuario, 200);
     }
 
     /**
@@ -50,6 +66,7 @@ class UsuarioController extends Controller
      */
     public function destroy(Usuario $usuario)
     {
-        //
+        $usuario->delete();
+        return response()->json(null, 204);
     }
 }

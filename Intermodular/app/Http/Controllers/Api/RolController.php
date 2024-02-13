@@ -45,6 +45,6 @@ class RolController extends Controller
      */
     public function destroy(Rol $rol)
     {
-        //
+        
     }
 }
