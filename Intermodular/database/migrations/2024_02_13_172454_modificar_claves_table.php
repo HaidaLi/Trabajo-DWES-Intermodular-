@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            //
+            $table->dropPrimary('dni');
         });
+
+
     }
 
     /**
@@ -22,7 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('usuarios', function (Blueprint $table) {
-            //
+            $table->primary('dni');
         });
     }
 };

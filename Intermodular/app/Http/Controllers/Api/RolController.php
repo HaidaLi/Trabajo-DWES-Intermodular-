@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 
@@ -10,17 +11,17 @@ class RolController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $roles = Rol::get();
+        return response()->json($roles);
     }
 
     /**
@@ -28,7 +29,7 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -36,15 +37,7 @@ class RolController extends Controller
      */
     public function show(Rol $rol)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Rol $rol)
-    {
-        //
+        return request()->json($rol);
     }
 
     /**
@@ -60,6 +53,6 @@ class RolController extends Controller
      */
     public function destroy(Rol $rol)
     {
-        //
+        
     }
 }

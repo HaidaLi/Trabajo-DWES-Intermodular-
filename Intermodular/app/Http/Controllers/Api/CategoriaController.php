@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -12,15 +13,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        $categorias = Categoria::get();
+        return response()->json($categorias, 200);
     }
 
     /**
@@ -28,7 +22,11 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+        return response()->json($categoria, 201);
     }
 
     /**
@@ -36,15 +34,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
-    {
-        //
+        return response()->json($categoria, 200);
     }
 
     /**
@@ -52,7 +42,10 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $categoria->nombre = $request->nombre;
+        $categoria->descripcion = $request->descripcion;
+        $categoria->save();
+        return response()->json($categoria, 201);
     }
 
     /**
@@ -60,6 +53,8 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        $categoria->delete();
+        return response()->json(null, 204);
+    
     }
 }

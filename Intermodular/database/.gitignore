@@ -1,1 +1,25 @@
-*.sqlite*
+public function up()
+    {
+        Schema::table('usuarios', function (Blueprint $table) {
+            // Agregar una nueva columna `id` como clave primaria
+            $table->bigIncrements('id')->first();
+
+            // Cambiar la columna `dni` para que no sea clave primaria
+            $table->string('dni')->change();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('usuarios', function (Blueprint $table) {
+            // Revertir los cambios
+            $table->dropColumn('id');
+            $table->bigIncrements('dni')->primary()->first();
+        });
+    }
+}*.sqlite*
