@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Servicio;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class ServicioController extends Controller
@@ -13,7 +14,8 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        //
+        $servicios = Usuario::get();
+        return response()->json($servicios, 200);
     }
 
     /**
@@ -21,7 +23,7 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

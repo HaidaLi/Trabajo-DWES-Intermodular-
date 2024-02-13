@@ -23,6 +23,9 @@ class Usuario extends Authenticatable
         'password',
     ];
 
+    protected $primaryKey = 'dni';
+    protected $keyType = 'string';
+
     /**
      * The attributes that should be hidden for serialization.
      *
