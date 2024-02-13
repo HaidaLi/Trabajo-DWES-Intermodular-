@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
+use App\Http\Resources\UserCollection;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,11 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = Usuario::get();
-        return response()->json($usuarios, 200);
+        $users = Usuario::all();
+        return (new UserCollection($users))->response()->setStatusCode(200);
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
