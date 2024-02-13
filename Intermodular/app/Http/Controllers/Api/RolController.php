@@ -11,9 +11,17 @@ class RolController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+     public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['index', 'show']
+        ]);
+    }
     public function index()
     {
-        //
+        $roles = Rol::get();
+        return response()->json($roles);
     }
 
     /**
@@ -21,7 +29,7 @@ class RolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -29,7 +37,7 @@ class RolController extends Controller
      */
     public function show(Rol $rol)
     {
-        //
+        return request()->json($rol);
     }
 
     /**
@@ -45,6 +53,6 @@ class RolController extends Controller
      */
     public function destroy(Rol $rol)
     {
-        //
+        
     }
 }
