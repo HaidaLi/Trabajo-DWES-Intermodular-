@@ -23,8 +23,6 @@ class Usuario extends Authenticatable
         'password',
     ];
 
-    protected $primaryKey = 'dni';
-    protected $keyType = 'string';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -35,6 +33,8 @@ class Usuario extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    protected $table = "usuarios";
 
     /**
      * The attributes that should be cast.
@@ -47,7 +47,7 @@ class Usuario extends Authenticatable
     ];
 
     public function roles(){
-        return $this->belongsToMany(Rol::class);
+        return $this->belongsToMany(Rol::class, 'rol_usuario', 'rol_id', 'usuario_id');
     }
 
     public function centro()
@@ -58,4 +58,5 @@ class Usuario extends Authenticatable
     public  function empresa(){
         return $this->belongsTo(Empresa::class);
     }
+
 }

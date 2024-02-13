@@ -19,7 +19,7 @@ class RolUsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            'usuario_id' => Usuario::all()->random()->dni,
+            'usuario_id' => Usuario::all()->random()->id,
             'rol_id' => Rol::all()->random()->id,
         ];
     }
