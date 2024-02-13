@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\CentroEmpresa;
 use App\Models\Empresa;
+use Database\Factories\RolUsuarioFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CentrosEmpresasSeeder::class);
         $this->call(CategoriasSeeder::class);
         $this->call(ServiciosSeeder::class);
+        $this->call(RolesUsuariosSeeder::class);
 
 
         // \App\Models\User::factory()->create([

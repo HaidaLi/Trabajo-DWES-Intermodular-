@@ -2,12 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Rol;
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Categoria>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RolUsuario>
  */
-class CategoriaFactory extends Factory
+class RolUsuarioFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +19,8 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' =>  $this->faker->word,
-            'descripcion' => $this->faker->text
-
+            'usuario_id' => Usuario::all()->random()->dni,
+            'rol_id' => Rol::all()->random()->id,
         ];
     }
 }
