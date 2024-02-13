@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Categoria;
-use Database\Factories\CategoriasFactory;
+use App\Models\RolUsuario;
+use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CategoriasSeeder extends Seeder
+class RolesUsuariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
-        Categoria::factory()->count(3)->create();
+        return RolUsuario::factory()->count(5)->create();
     }
 }

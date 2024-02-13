@@ -22,5 +22,5 @@ class CentroEmpresaFactory extends Factory
             'empresa_id' => Empresa::all()->random()->id,
             'centro_id' => Centro::all()->random()->id,
         ];
-    }
+    } 
 }

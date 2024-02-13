@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\CentroEmpresa;
 use App\Models\Empresa;
+use Database\Factories\RolUsuarioFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,16 +17,23 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(UsuariosSeeder::class);
+        
         $this->call(RolesSeeder::class);
+        $this->call(UsuariosSeeder::class);
+        $this->call(EmpresasSeeder::class);
+        $this->call(CentrosSeeder::class);
+        $this->call(CentrosEmpresasSeeder::class);
+        $this->call(CategoriasSeeder::class);
+        $this->call(ServiciosSeeder::class);
+        $this->call(RolesUsuariosSeeder::class);
+        $this->call(CategoriasServiciosSeeder::class);
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        $this->call(EmpresasSeeder::class);
-        $this->call(CentrosSeeder::class);
-        $this->call(CentrosEmpresasSeeder::class);
+        
     }
 }

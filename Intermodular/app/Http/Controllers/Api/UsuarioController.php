@@ -34,7 +34,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return response()->json($usuario, 200);;
+        return response()->json($usuario, 200);
     }
 
     /**
