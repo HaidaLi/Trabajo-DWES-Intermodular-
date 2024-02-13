@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriasSeeder::class);
         $this->call(ServiciosSeeder::class);
         $this->call(RolesUsuariosSeeder::class);
+        $this->call(CategoriasServiciosSeeder::class);
 
 
         // \App\Models\User::factory()->create([

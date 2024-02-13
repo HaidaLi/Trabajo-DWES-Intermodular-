@@ -17,9 +17,9 @@ class UsuarioFactory extends Factory
     public function definition(): array
     {
 
-        $login = $this->faker->word;
+        $login = $this->faker->unique()->userName;
         return [
-            'dni' => $this->faker->numerify('##########'),
+            'dni' => $this->faker->unique()->numerify('##########'),
             'login' => $login,
             'password' => bcrypt($login),
             'nombre' => $this->faker->name,
