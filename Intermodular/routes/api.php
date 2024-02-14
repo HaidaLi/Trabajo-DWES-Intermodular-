@@ -8,7 +8,11 @@ use App\Http\Controllers\Api\CategoriaController;
 use App\Http\Controllers\Api\FormularioController;
 use App\Http\Controllers\Api\PreguntaController;
 use App\Http\Controllers\Api\ResenyaController;
+use App\Http\Controllers\Api\EmpresaController;
 use App\Http\Controllers\Api\ServicioController;
+use App\Models\Centro;
+use App\Http\Controllers\Api\CentroController;
+use App\Http\Controllers\Api\CicloController;
 use App\Http\Controllers\Api\SolicitudController;
 use App\Http\Controllers\Api\TokenController;
 
@@ -33,6 +37,12 @@ Route::apiResource('usuarios', UsuarioController::class);
 Route::apiResource('categorias', CategoriaController::class);
 
 Route::apiResource('roles', RolController::class);
+
+Route::apiResource('empresas', EmpresaController::class);
+
+Route::apiResource('centros', CentroController::class);
+
+Route::apiResource('ciclos', CicloController::class);
 
 Route::apiResource('formularios', FormularioController::class);
 

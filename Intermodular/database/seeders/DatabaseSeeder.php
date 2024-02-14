@@ -10,6 +10,7 @@ use App\Models\FormularioPregunta;
 use Database\Factories\RolUsuarioFactory;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -28,6 +29,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiciosSeeder::class);
         $this->call(RolesUsuariosSeeder::class);
         $this->call(CategoriasServiciosSeeder::class);
+        $this->call(CiclosSeeder::class);
+
+
         $this->call(TokenSeeder::class);
         $this->call(FormularioSeeder::class);
         $this->call(PreguntasSeeder::class);
