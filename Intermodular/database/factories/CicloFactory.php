@@ -16,8 +16,9 @@ class CicloFactory extends Factory
      */
     public function definition(): array
     {
+        $nombre= $this->faker->company;
         return [
-
+            'nombre' => $nombre
         ];
     }
 }

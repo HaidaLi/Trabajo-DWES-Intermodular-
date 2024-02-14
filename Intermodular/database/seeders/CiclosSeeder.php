@@ -13,6 +13,6 @@ class CiclosSeeder extends Seeder
      */
     public function run()
     {
-
+        return Ciclo::factory()->count(5)->create();
     }
 }
