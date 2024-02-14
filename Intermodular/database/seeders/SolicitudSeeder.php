@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Token;
+use App\Models\Solicitud;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class tokenSeeder extends Seeder
+class SolicitudSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        return Token::factory()->count(5)->create();
+        return Solicitud::factory()->count(5)->create();
 
     }
 }

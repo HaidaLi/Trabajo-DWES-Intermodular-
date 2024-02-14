@@ -2,18 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Solicitud;
+use App\Models\Resenya;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class solicitudSeeder extends Seeder
+class ResenyaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        return Solicitud::factory()->count(5)->create();
+
+        return Resenya::factory()->count(5)->create();
 
     }
 }

@@ -20,6 +20,6 @@ class Formulario extends Model
     }
     public function libros()
     {
-    return $this->hasMany(Reseña::class);
+    return $this->hasMany(Resenya::class);
     }
 }

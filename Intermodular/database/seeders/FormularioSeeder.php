@@ -6,7 +6,7 @@ use App\Models\Formulario as form;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class formularioSeeder extends Seeder
+class FormularioSeeder extends Seeder
 {
     /**
      * Run the database seeds.

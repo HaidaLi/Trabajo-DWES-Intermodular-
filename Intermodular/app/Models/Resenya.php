@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reseña extends Model
+class Resenya extends Model
 {
     use HasFactory;
     protected $table = 'reseñas';
@@ -17,5 +17,8 @@ class Reseña extends Model
     public function centro_empresa() {
 
         return $this->hasOne(Token::class, 'idToken','codigo');
+    }
+    public function formulario_preguntas() {
+        return $this->hasOne(Formulariopregunta::class);
     }
 }

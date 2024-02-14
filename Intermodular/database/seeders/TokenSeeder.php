@@ -2,18 +2,18 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reseña as Reseñas;
+use App\Models\Token;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class reseñaSeeder extends Seeder
+class TokenSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        return Reseñas::factory()->count(5)->create();
+        return Token::factory()->count(5)->create();
 
     }
 }
