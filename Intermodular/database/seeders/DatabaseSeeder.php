@@ -9,6 +9,7 @@ use App\Models\Empresa;
 use Database\Factories\RolUsuarioFactory;
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        
+
         $this->call(RolesSeeder::class);
         $this->call(UsuariosSeeder::class);
         $this->call(EmpresasSeeder::class);
@@ -27,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiciosSeeder::class);
         $this->call(RolesUsuariosSeeder::class);
         $this->call(CategoriasServiciosSeeder::class);
+        $this->call(CiclosSeeder::class);
 
 
         // \App\Models\User::factory()->create([
@@ -34,6 +36,6 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        
+
     }
 }
