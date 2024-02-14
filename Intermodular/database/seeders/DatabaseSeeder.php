@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(reseñaSeeder::class);
         $this->call(formularioSeeder::class);
         $this->call(preguntasSeeder::class);
-        $this->call(solic::class);
+        $this->call(solicitudSeeder::class);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

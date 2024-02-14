@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Categoria;
+use App\Models\Formulario as Formularios;
 use Database\Seeders\Formulario;
 
 class Token extends Model
 {
     use HasFactory;
 
-    protected $table =  'servicios';
+    protected $table =  'token';
 
-    public  function empresa(){
-        return $this->belongsTo(Formulario::class);
+    public  function formulario(){
+        return $this->belongsTo(Formularios::class);
     }
 
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class tokenFactory extends Factory
+class ReseñaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class tokenFactory extends Factory
     public function definition(): array
     {
         return [
-            'token' => $this->faker->name,
-            'codigo' =>$this->faker->numberBetween(1,2000)
+            'fecha' => $this->faker->date('Y-m-d')
         ];
     }
 }
