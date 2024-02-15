@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ciclo>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CicloFactory extends Factory
+class PreguntaFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +16,10 @@ class CicloFactory extends Factory
      */
     public function definition(): array
     {
-        $nombre= $this->faker->company;
         return [
-            'nombre' => $nombre
+            'titulo' => $this->faker->title,
+            'tipo' => $this->faker->name,
+            'orden' => $this->faker->text
         ];
     }
 }

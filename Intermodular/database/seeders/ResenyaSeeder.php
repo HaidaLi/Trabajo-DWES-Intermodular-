@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
+use App\Models\Resenya;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Ciclo;
 
-class CiclosSeeder extends Seeder
+class ResenyaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        return Ciclo::factory()->count(5)->create();
+
+        return Resenya::factory()->count(5)->create();
+
     }
 }

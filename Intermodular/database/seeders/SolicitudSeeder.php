@@ -2,17 +2,18 @@
 
 namespace Database\Seeders;
 
+use App\Models\Solicitud;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Ciclo;
 
-class CiclosSeeder extends Seeder
+class SolicitudSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run()
     {
-        return Ciclo::factory()->count(5)->create();
+        return Solicitud::factory()->count(5)->create();
+
     }
 }

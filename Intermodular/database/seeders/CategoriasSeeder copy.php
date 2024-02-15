@@ -4,15 +4,14 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Ciclo;
 
-class CiclosSeeder extends Seeder
+class CategoriasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        return Ciclo::factory()->count(5)->create();
+        //
     }
 }
