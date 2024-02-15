@@ -39,7 +39,18 @@ Route::apiResource('categorias', CategoriaController::class);
 
 Route::apiResource('roles', RolController::class);
 
-Route::post('/auth', [LoginController::class, 'login']);
+Route::apiResource('token', TokenController::class);
+Route::apiResource('ciclos', CicloController::class);
+Route::apiResource('centros', CentroController::class);
+Route::apiResource('empresas', EmpresaController::class);
+Route::apiResource('solicitudes', SolicitudController::class);
+Route::apiResource('resenyas', ResenyaController::class);
+
+
+
+
+
+
 
 Route::prefix('auth')->group(function(){
     Route::post('login', [LoginController::class, 'login']);
