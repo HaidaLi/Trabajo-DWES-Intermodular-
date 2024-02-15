@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RolController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -30,4 +31,11 @@ Route::apiResource('categorias', CategoriaController::class);
 
 Route::apiResource('roles', RolController::class);
 
+Route::post('/auth', [LoginController::class, 'login']);
 
+Route::prefix('auth')->group(function(){
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('register', [LoginController::class, 'register']);
+    Route::post('logout', [LoginController::class, 'logout']);
+
+});
