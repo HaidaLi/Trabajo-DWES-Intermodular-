@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioRequest;
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -50,7 +51,7 @@ class UsuarioController extends Controller
      */
     public function show(Usuario $usuario)
     {
-        return response()->json($usuario, 200);
+        return (new UserResource($usuario))->response()->setStatusCode(200);
     }
 
     /**

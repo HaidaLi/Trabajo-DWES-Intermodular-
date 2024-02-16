@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\RolController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,18 +39,22 @@ Route::apiResource('categorias', CategoriaController::class);
 
 Route::apiResource('roles', RolController::class);
 
-Route::apiResource('empresas', EmpresaController::class);
-
-Route::apiResource('centros', CentroController::class);
-
+Route::apiResource('token', TokenController::class);
 Route::apiResource('ciclos', CicloController::class);
-
-Route::apiResource('formularios', FormularioController::class);
-
-Route::apiResource('preguntas', PreguntaController::class);
-
+Route::apiResource('centros', CentroController::class);
+Route::apiResource('empresas', EmpresaController::class);
+Route::apiResource('solicitudes', SolicitudController::class);
 Route::apiResource('resenyas', ResenyaController::class);
 
-Route::apiResource('solicitudes', SolicitudController::class);
 
-Route::apiResource('token', TokenController::class);
+
+
+
+
+
+Route::prefix('auth')->group(function(){
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('register', [LoginController::class, 'register']);
+    Route::post('logout', [LoginController::class, 'logout']);
+
+});
