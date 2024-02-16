@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('imagen')->nullable();
+            $table->string('telefono')->nullable();
             $table->text('descripcion')->nullable();
             $table->text('notas')->nullable();
             $table->string('email')->nullable();
@@ -28,7 +30,7 @@ return new class extends Migration
             $table->integer('puestos_disponibles')->nullable();
             $table->string('categorias')->nullable();
             $table->timestamps();
-            
+
         });
     }
 
