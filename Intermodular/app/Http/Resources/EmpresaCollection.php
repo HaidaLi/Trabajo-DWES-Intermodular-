@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class UserCollection extends ResourceCollection
+class EmpresaCollection extends ResourceCollection
 {
     /**
      * Transform the resource collection into an array.
@@ -17,5 +17,5 @@ class UserCollection extends ResourceCollection
         return [
             'data' => $this->collection,
         ];
-}
+    }
 }
