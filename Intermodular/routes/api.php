@@ -49,10 +49,6 @@ Route::apiResource('servicios', ServicioController::class);
 
 
 
-
-
-
-
 Route::prefix('auth')->group(function(){
     Route::post('login', [LoginController::class, 'login']);
     Route::post('register', [LoginController::class, 'register']);

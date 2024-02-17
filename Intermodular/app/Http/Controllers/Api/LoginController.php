@@ -40,8 +40,8 @@ class LoginController extends Controller
         $fields = $request->all();
         $fields['password'] = bcrypt($fields['password']);
         $user = Usuario::create($fields);
+        $user->roles()->sync($request->input('roles'));
         $userResource = new UserResource($user);
-
         $token = $user->createToken('appToken')->plainTextToken;
 
         return response()->json([
