@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RoleCollection;
 use App\Models\Rol;
 use Illuminate\Http\Request;
 
@@ -14,14 +15,14 @@ class RolController extends Controller
 
      public function __construct()
     {
-        $this->middleware('auth', [
+        $this->middleware('auth:sanctum',  [
             'except' => ['index', 'show']
         ]);
     }
     public function index()
     {
         $roles = Rol::get();
-        return response()->json($roles);
+        return (new RoleCollection($roles))->response()->setStatusCode(200);
     }
 
     /**

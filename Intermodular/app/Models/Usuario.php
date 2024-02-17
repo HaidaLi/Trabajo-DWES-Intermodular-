@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class Usuario extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -18,9 +19,11 @@ class Usuario extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'login',
+        'dni',
+        'nombre',
         'password',
+        'remember_token',
     ];
 
 
@@ -32,6 +35,7 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        
     ];
 
     protected $table = "usuarios";
@@ -46,8 +50,10 @@ class Usuario extends Authenticatable
         'password' => 'hashed',
     ];
 
+    
+
     public function roles(){
-        return $this->belongsToMany(Rol::class, 'rol_usuario', 'rol_id', 'usuario_id');
+        return $this->belongsToMany(Rol::class, 'rol_usuario', 'usuario_id' , 'rol_id');
     }
 
     public function centro()

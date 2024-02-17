@@ -10,16 +10,17 @@ class UsuariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     */ 
+     */
     public function run(): void
     {
         Usuario::factory()->count(5)->create();
 
         $usuario = new Usuario();
-        $usuario->dni = '123456789X';
+        $usuario->dni = '12345678X';
         $usuario->login = 'admin';
         $usuario->password = bcrypt('admin');
         $usuario->nombre = 'admin';
         $usuario->save();
+        $usuario->roles()->sync([2]);
     }
 }

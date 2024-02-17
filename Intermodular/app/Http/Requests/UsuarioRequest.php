@@ -22,10 +22,10 @@ class UsuarioRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'login' => 'required|string|max:255',
-            'dni' => 'required|unique:usuarios,dni',
-            'nombre' => 'required|string|max:255',
+            'dni' => 'required|unique:usuarios',
+            'login' => 'required|string|max:255|unique:usuarios',
             'password' => 'required|string|min:8',
+            'nombre' => 'required|string|max:255',
         ];
     }
 

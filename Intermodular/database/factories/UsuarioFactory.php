@@ -19,7 +19,7 @@ class UsuarioFactory extends Factory
 
         $login = $this->faker->unique()->userName;
         return [
-            'dni' => $this->faker->unique()->numerify('##########'),
+            'dni' => $this->faker->unique()->numerify('#########'),
             'login' => $login,
             'password' => bcrypt($login),
             'nombre' => $this->faker->name,
