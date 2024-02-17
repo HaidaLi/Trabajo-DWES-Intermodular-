@@ -48,10 +48,6 @@ Route::apiResource('resenyas', ResenyaController::class);
 
 
 
-
-
-
-
 Route::prefix('auth')->group(function(){
     Route::post('login', [LoginController::class, 'login']);
     Route::post('register', [LoginController::class, 'register']);
