@@ -24,7 +24,7 @@ class LoginController extends Controller
         $fields = $request->all();
         $usuario = Usuario::where('login', $request->login, $fields['login'])->first();
         if (!$usuario || !Hash::check($request->password, $usuario->password)) {
-            return response()->json(['error' => 'Credenciales no válidas'], 401);
+            return response()->json(['message' => 'Credenciales no válidas'], 401);
         } else {
             $userResource = new UserResource($usuario);
             return response()->json([

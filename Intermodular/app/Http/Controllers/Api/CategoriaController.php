@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoriaCollection;
+use App\Http\Resources\CategoriaResource;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class CategoriaController extends Controller
     public function index()
     {
         $categorias = Categoria::get();
-        return response()->json($categorias, 200);
+        return (new CategoriaCollection($categorias))->response()->setStatusCode(200);
+    
     }
 
     /**
@@ -34,7 +37,9 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        return response()->json($categoria, 200);
+        
+        return (new CategoriaResource($categoria))->response()->setStatusCode(200);
+        
     }
 
     /**

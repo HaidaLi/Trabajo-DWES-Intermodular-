@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ServicioCollection;
+use App\Http\Resources\ServicioResource;
 use App\Models\Servicio;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -14,8 +16,9 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        $servicios = Usuario::get();
-        return response()->json($servicios, 200);
+        $servicios = Servicio::all();
+        return  (new ServicioCollection($servicios))->response()->setStatusCode(200);
+    // return response()->json($servicios)->setStatusCode(200);
     }
 
     /**
@@ -23,7 +26,11 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $servicio = new Servicio();
+        $servicio->nombre = $request->nombre;
+        $servicio->descripcion = $request->descripcion;
+        $servicio->save();
+        return response()->json($servicio, 201);
     }
 
     /**
@@ -31,7 +38,7 @@ class ServicioController extends Controller
      */
     public function show(Servicio $servicio)
     {
-        //
+        return  (new ServicioResource($servicio))->response()->setStatusCode(200);
     }
 
     /**
