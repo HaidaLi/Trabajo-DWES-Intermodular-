@@ -16,8 +16,8 @@ class CategoriaResource extends JsonResource
     {
         return [
             "nombre" => $this->nombre,
-            "descripcion"=>$this->descripcion,
-            'servicios' => $this->servicios()->pluck('nombre')
+            "descripcion" => $this->descripcion,
+            'servicios' => $this->servicios->pluck('nombre')
         ];
     }
 }

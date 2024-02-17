@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoriaCollection;
 use App\Http\Resources\CategoriaResource;
 use App\Models\Categoria;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -17,7 +18,7 @@ class CategoriaController extends Controller
     {
         $categorias = Categoria::get();
         return (new CategoriaCollection($categorias))->response()->setStatusCode(200);
-    
+
     }
 
     /**
@@ -25,21 +26,42 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'nombre' => 'required',
+            'descripcion' => 'required',
+            'servicios' => 'array',
+            'servicios.*' => 'exists:servicios,id'
+        ]);
+
+        // Crea una nueva categoría
         $categoria = new Categoria();
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;
         $categoria->save();
-        return response()->json($categoria, 201);
+        if ($request->has('servicios')) {
+            foreach ($request->servicios as $servicioId) {
+                $servicio = Servicio::find($servicioId);
+                if ($servicio) {
+                    $categoria->servicios()->attach($servicioId);
+                }
+            }
+        }
+        return response()->json([
+            'categoria' => new CategoriaResource($categoria),
+            'servicios' => $categoria->servicios()->pluck('nombre')->toArray()
+        ], 201);
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Categoria $categoria)
     {
-        
+
         return (new CategoriaResource($categoria))->response()->setStatusCode(200);
-        
+
     }
 
     /**
@@ -60,6 +82,6 @@ class CategoriaController extends Controller
     {
         $categoria->delete();
         return response()->json(null, 204);
-    
+
     }
 }
