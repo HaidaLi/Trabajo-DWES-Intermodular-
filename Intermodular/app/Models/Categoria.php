@@ -12,4 +12,9 @@ class Categoria extends Model
     public function usuarios(){
         return $this->belongsToMany(Empresa::class);
     }
+
+    
+    public function servicios(){
+        return $this->belongsToMany(Servicio::class,'categoria_servicio', 'categoria_id', 'servicio_id' );
+    }
 }
