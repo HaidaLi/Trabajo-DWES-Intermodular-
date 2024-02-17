@@ -28,23 +28,27 @@ class EmpresaFactory extends Factory
         $provincia = $this->faker->randomElement($provincias);
         $poblacion = $this->faker->randomElement($poblaciones[$provincia]);
 
+
         return [
             'nombre' => $nombre,
             'descripcion' => $this->faker->text,
-            'notas' => $this->faker->paragraph,
-            'email' => $this->faker->unique()->safeEmail,
+            'nota_alumno' => $this->faker->numberBetween(1,100),
+            'nota_profesor' => $this->faker->numberBetween(1,100),
+            'correo' => $this->faker->unique()->safeEmail,
             'password' => bcrypt($nombre),
-            'direccion' => $this->faker->address,
+            'calle' => $this->faker->address,
             'coordenadas' => $this->faker->latitude() . ', ' . $this->faker->longitude(),
             'cif' => $cif,
             'provincia' => $provincia,
             'poblacion' => $poblacion,
             'horario' => $this->faker->time,
-            'dias_trabajo' => $this->faker->word,
-            'puestos_disponibles' => $this->faker->randomNumber,
+            'vacantes' => $this->faker->randomNumber,
             'categorias' => $this->faker->word,
             'telefono' => $this->faker->phoneNumber,
             'imagen' => "https://loremflickr.com/640/480/business",
+            'turno' => $this->faker->randomElement(['L-V', 'L-S', 'L-D']),
+            'entrada' => $this->faker->time('H:i'),
+            'salida' => $this->faker->time('H:i')
         ];
     }
 }

@@ -16,25 +16,34 @@ class EmpresaResource extends JsonResource
     {
         //return parent::toArray($request);
         return [
+            'id' => $this->id,
             'nombre' => $this->nombre,
-            'descripcion' => $this->descripcion,
-            'notas' => $this->notas,
-            'email' => $this->email,
-            'password' => $this->password,
-            'direccion' => $this->direccion,
-            'coordenadas' => [
-                'lat' => explode(', ', $this->coordenadas)[0],
-                'lng' => explode(', ', $this->coordenadas)[1],
-            ],
-            'cif' => $this->cif,
-            'provincia' => $this->provincia,
-            'poblacion' => $this->poblacion,
-            'horario' => $this->horario,
-            'dias_trabajo' => $this->dias_trabajo,
-            'puestos_disponibles' => $this->puestos_disponibles,
-            'categorias' => $this->categorias,
-            'telefono' => $this->telefono,
             'imagen' => $this->imagen,
+            'telefono' => $this->telefono,
+            'correo' => $this->correo,
+            'direccion' => [
+                'provincia' => $this->provincia,
+                'poblacion' => $this->poblacion,
+                'calle' => $this->calle,
+                'coordenadas' => [
+                    'lat' => explode(', ', $this->coordenadas)[0],
+                    'lng' => explode(', ', $this->coordenadas)[1],
+                ],
+            ],
+            'vacantes' => $this->vacantes,
+            'categorias' => explode(',', $this->categorias),
+            'horario' => [
+                [
+                    'turno' => $this->turno,
+                    'entrada' => $this->entrada,
+                    'salida' => $this->salida,
+                ],
+            ],
+            'nota' => [
+                'estudiante' => $this->nota_alumno,
+                'profesor' => $this->nota_profesor,
+            ],
+            'CIF' => $this->cif
         ];
     }
 }

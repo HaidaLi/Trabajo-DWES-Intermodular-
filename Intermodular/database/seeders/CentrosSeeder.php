@@ -13,6 +13,6 @@ class CentrosSeeder extends Seeder
      */
     public function run()
     {
-        return Centro::factory()->count(5)->create();
+        return Centro::factory()->count(20)->create();
     }
 }
