@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
+use App\Http\Resources\EmpresaCollection;
 
 class EmpresaController extends Controller
 {
@@ -14,9 +15,7 @@ class EmpresaController extends Controller
     public function index()
     {
         $empresas = Empresa::get();
-        return response()->json($empresas, 200);
-
-
+        return (new EmpresaCollection($empresas))->response()->setStatusCode(200);
     }
 
     /**

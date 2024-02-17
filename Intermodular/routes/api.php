@@ -45,6 +45,7 @@ Route::apiResource('centros', CentroController::class);
 Route::apiResource('empresas', EmpresaController::class);
 Route::apiResource('solicitudes', SolicitudController::class);
 Route::apiResource('resenyas', ResenyaController::class);
+Route::apiResource('servicios', ServicioController::class);
 
 
 

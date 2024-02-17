@@ -14,21 +14,26 @@ return new class extends Migration
         Schema::create('empresas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('imagen')->nullable();
+            $table->string('telefono')->nullable();
             $table->text('descripcion')->nullable();
-            $table->text('notas')->nullable();
-            $table->string('email')->nullable();
+            $table->integer('nota_alumno')->nullable();
+            $table->integer('nota_profesor')->nullable();
+            $table->string('correo')->nullable();
             $table->string('password')->nullable();
-            $table->string('direccion')->nullable();
+            $table->string('calle')->nullable();
             $table->string('coordenadas')->nullable();
             $table->string('cif')->nullable();
             $table->string('provincia')->nullable();
             $table->string('poblacion')->nullable();
             $table->string('horario')->nullable();
-            $table->string('dias_trabajo')->nullable();
-            $table->integer('puestos_disponibles')->nullable();
+            $table->string('turno')->nullable();
+            $table->integer('vacantes')->nullable();
             $table->string('categorias')->nullable();
+            $table->string('entrada')->nullable();
+            $table->string('salida')->nullable();
             $table->timestamps();
-            
+
         });
     }
 
