@@ -13,6 +13,6 @@ class CentrosEmpresasSeeder extends Seeder
      */
     public function run()
     {
-        return CentroEmpresa::factory()->count(5)->create();
+        return CentroEmpresa::factory()->count(20)->create();
     }
 }
