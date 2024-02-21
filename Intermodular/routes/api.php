@@ -39,11 +39,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('token', TokenController::class);
     Route::apiResource('ciclos', CicloController::class);
     Route::apiResource('centros', CentroController::class);
-    Route::apiResource('empresas', EmpresaController::class);
     Route::apiResource('solicitudes', SolicitudController::class);
     Route::apiResource('resenyas', ResenyaController::class);
     Route::apiResource('servicios', ServicioController::class);
 });
+
+Route::apiResource('empresas', EmpresaController::class);
+
 
 
 // Route::middleware(['auth:sanctum', 'role:empresa'])->group(function () {
