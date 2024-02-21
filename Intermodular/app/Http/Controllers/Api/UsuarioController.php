@@ -15,7 +15,7 @@ class UsuarioController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:sanctum', [
+        $this->middleware('auth:sanctum',  [
             'except' => ['index', 'show']
         ]);
     }
@@ -25,6 +25,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $users = Usuario::all();
+        $users = Usuario::with('centro', 'empresa', 'roles')->get();
         return (new UserCollection($users))->response()->setStatusCode(200);
     }
 
@@ -33,35 +34,46 @@ class UsuarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UsuarioRequest $request)
     {
-        $usuario = new Usuario();
-        $usuario->dni = $request->dni;
-        $usuario->login = $request->login;
-        $usuario->password = bcrypt($request->password);
-        $usuario->nombre = $request->nombre;
-        $usuario->save();
+        $fields = $request->all();
+        $fields['password'] = bcrypt($fields['password']);
 
-        return response()->json($usuario, 201);
+        $user = Usuario::create($fields);
+        $user->roles()->sync($request->input('roles'));
+        $userResource = new UserResource($user);
 
+        return response()->json([
+            'usuario' => $userResource,
+            'roles' => $userResource->roles()->pluck('nombre')->toArray()
+        ], 201);
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Usuario $usuario)
     {
+        $usuario->load('empresa');
+        $usuario->load('roles');
         return (new UserResource($usuario))->response()->setStatusCode(200);
+        //return response()->json($usuario, 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UsuarioRequest $request, Usuario $usuario)
+    public function update(Request $request, Usuario $usuario)
     {
-        $usuario->update($request->all());
+        $usuario->nombre = $request->nombre;
+        $usuario->password = $request->password;
+        $usuario->login = $request->login;
+        $usuario->dni = $request->dni;
+        $usuario->save();
         return response()->json($usuario, 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
