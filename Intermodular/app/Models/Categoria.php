@@ -9,6 +9,13 @@ class Categoria extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'nombre',
+        'descripcion'
+    ];
+
+
+
     public function usuarios(){
         return $this->belongsToMany(Empresa::class);
     }

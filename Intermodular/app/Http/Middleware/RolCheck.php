@@ -15,6 +15,13 @@ class RolCheck
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
+        if (!auth()->check())
+            return redirect('login');
+        $user = auth()->user();
+
+        if ($user->isAdmin())
+            return $next($request);
+
         if (in_array(auth()->user()->rol, $roles))
             return $next($request);
         else
