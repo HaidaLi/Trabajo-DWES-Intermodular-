@@ -15,9 +15,10 @@ class CategoriaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            "id" => $this->id,
             "nombre" => $this->nombre,
-            "descripcion"=>$this->descripcion,
-            'servicios' => $this->servicios()->pluck('nombre')
+            "descripcion" => $this->descripcion,
+            'servicios' => $this->servicios->pluck('nombre')
         ];
     }
 }

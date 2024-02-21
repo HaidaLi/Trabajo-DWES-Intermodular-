@@ -23,21 +23,22 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        
         $empresa = new Empresa();
 
         $empresa->nombre = $request->nombre;
-        $empresa->descripcion = $request->descripcion;
-        $empresa->notas = $request->notas;
-        $empresa->email = $request->email;
+        $empresa->imagen = "https://loremflickr.com/640/480/business";
+        $empresa->descripcion = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit assumenda alias est?";
+        $empresa->nota_alumno = 5;
+        $empresa->nota_profesor = 6;
+        $empresa->correo = $request->correo;
         $empresa->password = bcrypt($request->password);
-        $empresa->direccion = $request->direccion;
-        $empresa->coordenadas = $request->coordenadas;
+        // $empresa->coordenadas =  $latitud.','.$longitud;
         $empresa->cif = $request->cif;
         $empresa->provincia = $request->provincia;
         $empresa->poblacion = $request->poblacion;
         $empresa->horario = $request->horario;
-        $empresa->dias_trabajo = $request->dias_trabajo;
-        $empresa->puestos_disponibles = $request->puestos_disponibles;
+        $empresa->vacantes = $request->vacantes;
         $empresa->categorias = $request->categorias;
 
         $empresa->save();

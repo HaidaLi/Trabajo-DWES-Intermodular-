@@ -23,6 +23,8 @@ class Usuario extends Authenticatable
         'dni',
         'nombre',
         'password',
+        'centro_id',
+        'empresa_id',
         'remember_token',
     ];
 
@@ -35,7 +37,7 @@ class Usuario extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        
+
     ];
 
     protected $table = "usuarios";
@@ -50,10 +52,11 @@ class Usuario extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
 
-    public function roles(){
-        return $this->belongsToMany(Rol::class, 'rol_usuario', 'usuario_id' , 'rol_id');
+
+    public function roles()
+    {
+        return $this->belongsToMany(Rol::class, 'rol_usuario', 'usuario_id', 'rol_id');
     }
 
     public function centro()
@@ -61,8 +64,14 @@ class Usuario extends Authenticatable
         return $this->belongsTo(Centro::class);
     }
 
-    public  function empresa(){
+    public function empresa()
+    {
         return $this->belongsTo(Empresa::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 
 }

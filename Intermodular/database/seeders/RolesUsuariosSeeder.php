@@ -14,6 +14,6 @@ class RolesUsuariosSeeder extends Seeder
      */
     public function run()
     {
-        return RolUsuario::factory()->count(5)->create();
+        return RolUsuario::factory()->count(30)->create();
     }
 }
