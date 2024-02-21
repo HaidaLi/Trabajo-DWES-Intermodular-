@@ -14,13 +14,17 @@ return new class extends Migration
         Schema::create('centros', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('email');
+            $table->string('correo');
             $table->string('password');
-            $table->text('direccion');
+            $table->string('imagen');
+            $table->text('calle');
             $table->string('telefono');
-            $table->string('poblacion');
-            $table->string('provincia');
+
+
             $table->timestamps();
+            $table->string('provincia')->nullable();
+            $table->string('poblacion')->nullable();
+            $table->string('coordenadas')->nullable();
         });
     }
 

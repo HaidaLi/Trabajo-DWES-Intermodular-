@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
 use App\Http\Resources\EmpresaCollection;
+use App\Http\Resources\EmpresaResource;
 
 class EmpresaController extends Controller
 {
@@ -50,7 +51,7 @@ class EmpresaController extends Controller
      */
     public function show(Empresa $empresa)
     {
-        return response()->json($empresa, 200);
+        return response()->json(new EmpresaResource($empresa), 200);
     }
 
     /**

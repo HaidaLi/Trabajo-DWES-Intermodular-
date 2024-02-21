@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Centro;
 use Illuminate\Http\Request;
+use App\Http\Resources\CentroCollection;
 
 class CentroController extends Controller
 {
@@ -14,7 +15,7 @@ class CentroController extends Controller
     public function index()
     {
         $centros = Centro::get();
-        return response()->json($centros, 200);
+        return (new CentroCollection($centros))->response()->setStatusCode(200);
 
     }
 
@@ -32,7 +33,6 @@ class CentroController extends Controller
         $centro->telefono = $request->telefono;
         $centro->poblacion = $request->poblacion;
         $centro->provincia = $request->provincia;
-
         $centro->save();
 
         return response()->json($centro, 201);
