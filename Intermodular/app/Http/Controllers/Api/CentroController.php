@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Centro;
 use Illuminate\Http\Request;
 use App\Http\Resources\CentroCollection;
+use App\Http\Resources\CentroResource;
 
 class CentroController extends Controller
 {
@@ -43,7 +44,7 @@ class CentroController extends Controller
      */
     public function show(Centro $centro)
     {
-        return response()->json($centro, 200);
+        return response()->json(new CentroResource($centro), 200);
     }
 
     /**
