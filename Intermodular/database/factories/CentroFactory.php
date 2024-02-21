@@ -17,14 +17,27 @@ class CentroFactory extends Factory
     public function definition(): array
     {
         $nombre= $this->faker->company;
+
+        $provincias = ['Alicante', 'Castellon', 'Valencia'];
+        $poblaciones = [
+            'Alicante' => ['Alicante', 'Elche', 'Torrevieja'],
+            'Castellon' => ['Castellon de la Plana', 'Vila-real', 'Burriana'],
+            'Valencia' => ['Valencia', 'Gandía', 'Torrent'],
+        ];
+        $provincia = $this->faker->randomElement($provincias);
+        $poblacion = $this->faker->randomElement($poblaciones[$provincia]);
         return [
             'nombre' => $nombre,
-            'email' => $this->faker->unique()->safeEmail,
+            'imagen' => "https://loremflickr.com/640/480/business",
             'password' => bcrypt($nombre),
-            'direccion' => $this->faker->address,
+            'calle' => $this->faker->address,
             'telefono' => $this->faker->phoneNumber,
             'poblacion' => $this->faker->city,
             'provincia' => $this->faker->state,
+            'correo' => $this->faker->unique()->safeEmail,
+            'calle' => $this->faker->address,
+            'provincia' => $provincia,
+            'poblacion' => $poblacion,
         ];
     }
 }

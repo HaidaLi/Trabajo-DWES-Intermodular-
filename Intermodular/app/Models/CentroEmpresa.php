@@ -9,4 +9,10 @@ class CentroEmpresa extends Model
 {
     use HasFactory;
     protected $table = 'centro_empresa';
+
+    public function tokern()
+    {
+        return $this->belongsTo(Centro::class);
+    }
+
 }

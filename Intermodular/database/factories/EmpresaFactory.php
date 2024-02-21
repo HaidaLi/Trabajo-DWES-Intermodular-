@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Categoria;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Empresa>
@@ -28,7 +29,10 @@ class EmpresaFactory extends Factory
         $provincia = $this->faker->randomElement($provincias);
         $poblacion = $this->faker->randomElement($poblaciones[$provincia]);
 
+        $categorias = Categoria::pluck('nombre')->toArray();
 
+
+        $categoriaAleatoria = $this->faker->randomElement($categorias);
         return [
             'nombre' => $nombre,
             'descripcion' => $this->faker->text,
@@ -42,8 +46,8 @@ class EmpresaFactory extends Factory
             'provincia' => $provincia,
             'poblacion' => $poblacion,
             'horario' => $this->faker->time,
-            'vacantes' => $this->faker->randomNumber,
-            'categorias' => $this->faker->word,
+            'vacantes' => $this->faker->numberBetween(1,20),
+            'categorias' => $categoriaAleatoria,
             'telefono' => $this->faker->phoneNumber,
             'imagen' => "https://loremflickr.com/640/480/business",
             'turno' => $this->faker->randomElement(['L-V', 'L-S', 'L-D']),
