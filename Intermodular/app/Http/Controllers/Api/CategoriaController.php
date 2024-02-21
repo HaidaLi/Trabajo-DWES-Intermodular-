@@ -31,10 +31,8 @@ class CategoriaController extends Controller
             'nombre' => 'required',
             'descripcion' => 'required',
             'servicios' => 'array',
-            'servicios.*' => 'exists:servicios,id'
         ]);
 
-        // Crea una nueva categoría
         $categoria = new Categoria();
         $categoria->nombre = $request->nombre;
         $categoria->descripcion = $request->descripcion;

@@ -16,17 +16,19 @@ class UserResource extends JsonResource
     {
         // retun parent::toArray($request);
 
-        
+
         return [
-            
+
             'id' => $this->id,
             'nombre' => $this->nombre,
             'dni' => $this->dni,
             'login' => $this->login,
-            'empresa' => $this->empresa_id,
-            'roles' => $this->roles()->pluck('nombre')
+            'roles' => RoleResource::collection($this->whenLoaded('roles')),
+            'centro' => $this->centro ? $this->centro->nombre : null,
+            'empresa' => new EmpresaResource($this->whenLoaded('empresa')),
 
         ];
+
 
     }
 }

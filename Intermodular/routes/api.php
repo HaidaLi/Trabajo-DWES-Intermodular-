@@ -32,20 +32,43 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('usuarios', UsuarioController::class);
+    Route::apiResource('categorias', CategoriaController::class);
+    Route::apiResource('roles', RolController::class);
+    Route::apiResource('token', TokenController::class);
+    Route::apiResource('ciclos', CicloController::class);
+    Route::apiResource('centros', CentroController::class);
+    Route::apiResource('empresas', EmpresaController::class);
+    Route::apiResource('solicitudes', SolicitudController::class);
+    Route::apiResource('resenyas', ResenyaController::class);
+    Route::apiResource('servicios', ServicioController::class);
+});
 
-Route::apiResource('usuarios', UsuarioController::class);
 
-Route::apiResource('categorias', CategoriaController::class);
+// Route::middleware(['auth:sanctum', 'role:empresa'])->group(function () {
+//     Route::apiResource('usuarios', UsuarioController::class);
+//     Route::apiResource('categorias', CategoriaController::class);
+//     Route::apiResource('ciclos', CicloController::class);
+//     Route::apiResource('centros', CentroController::class);
+//     Route::apiResource('empresas', EmpresaController::class);
+//     Route::apiResource('solicitudes', SolicitudController::class);
+//     Route::apiResource('resenyas', ResenyaController::class);
+//     Route::apiResource('servicios', ServicioController::class);
 
-Route::apiResource('roles', RolController::class);
+// });
 
-Route::apiResource('token', TokenController::class);
-Route::apiResource('ciclos', CicloController::class);
-Route::apiResource('centros', CentroController::class);
-Route::apiResource('empresas', EmpresaController::class);
-Route::apiResource('solicitudes', SolicitudController::class);
-Route::apiResource('resenyas', ResenyaController::class);
-Route::apiResource('servicios', ServicioController::class);
+// Route::middleware(['auth:sanctum', 'role:tutor'])->group(function () {
+//     Route::apiResource('usuarios', UsuarioController::class);
+//     Route::apiResource('categorias', CategoriaController::class);
+//     Route::apiResource('ciclos', CicloController::class);
+//     Route::apiResource('centros', CentroController::class);
+//     Route::apiResource('empresas', EmpresaController::class);
+//     Route::apiResource('solicitudes', SolicitudController::class);
+//     Route::apiResource('resenyas', ResenyaController::class);
+//     Route::apiResource('servicios', ServicioController::class);
+// });
+
 
 
 
@@ -55,3 +78,5 @@ Route::prefix('auth')->group(function(){
     Route::post('logout', [LoginController::class, 'logout']);
 
 });
+
+Route::get('/login', [LoginController::class, 'login'])->name('login');

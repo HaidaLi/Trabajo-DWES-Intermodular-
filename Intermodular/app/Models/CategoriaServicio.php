@@ -9,5 +9,13 @@ class CategoriaServicio extends Model
 {
     use HasFactory;
 
+    protected $fillable =  [
+        'categoria_id',
+        'servicio_id',
+
+    ];
+
+
+
     protected $table = "categoria_servicio";
 }
